@@ -10,10 +10,18 @@ import java.util.stream.Collectors;
 public class Dessin extends Forme implements Tools {
     List<Image> imagesList;
 
+    /**
+     * Contructeur
+     * @param imagesList Liste d'images
+     */
     public Dessin(List<Image> imagesList) {
         this.imagesList = imagesList;
     }
-    
+
+    /**
+     * Constructeur avec l'objet dessin pour le clonage
+     * @param dessin
+     */
     public Dessin(Dessin dessin) {
         this(dessin.imagesList.stream().map(Image::new).collect(Collectors.toList()));
     }

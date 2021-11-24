@@ -2,19 +2,25 @@ package fr.lsi1.projectalpha;
 
 import fr.lsi1.projectalpha.form.*;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Image extends Forme implements Tools {
     List<Forme> formeList;
 
+    /**
+     * Constructeur
+     * @param formeList Liste de forme
+     */
     public Image(List<Forme> formeList) {
         this.formeList = formeList;
     }
-    
+
+    /**
+     * Contructeut avec l'objet Image pour le clonage
+     * @param image
+     */
     public Image(Image image) {
         this(image.formeList.stream().map(Forme::clone).collect(Collectors.toList()));
     }

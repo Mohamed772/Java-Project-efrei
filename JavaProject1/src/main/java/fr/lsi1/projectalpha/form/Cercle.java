@@ -2,16 +2,24 @@ package fr.lsi1.projectalpha.form;
 
 import fr.lsi1.projectalpha.Tools;
 
-import java.util.Objects;
 
 public class Cercle extends Forme implements Tools {
-    private Point pCercle;
+    private final Point pCercle;
 
+    /**
+     * Contructeur
+     * @param centre Centre du cercle
+     * @param pCercle Un point sur le cerle
+     */
     public Cercle(Point centre, Point pCercle) {
         super(centre);
         this.pCercle = pCercle;
     }
-    
+
+    /**
+     * Contructeur avec un objet Cerlce pour le clonage.
+     * @param cercle
+     */
     public Cercle(Cercle cercle) {
         this(new Point(cercle.pCentre), new Point(cercle.pCercle));
     }

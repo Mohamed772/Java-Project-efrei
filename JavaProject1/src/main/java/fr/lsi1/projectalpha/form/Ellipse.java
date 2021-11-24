@@ -6,23 +6,25 @@ import java.util.List;
 import java.util.Objects;
 
 public class Ellipse extends Forme implements Tools {
-    private Ligne grandAxe,petitAxe;
+    private final Ligne grandAxe;
+    private final Ligne petitAxe;
 
-    @Override
-    public String toString() {
-        return "Ellipse{" +
-                "grandAxe=" + grandAxe +
-                ", petitAxe=" + petitAxe +
-                ", pCentre=" + pCentre +
-                '}';
-    }
-
+    /**
+     * Constructeur
+     * @param centre Centre le l'ellipse
+     * @param grandAxe Gande axe
+     * @param petitAxe Petite axe
+     */
     public Ellipse(Point centre, Ligne grandAxe, Ligne petitAxe) {
         super(centre);
         this.grandAxe = grandAxe;
         this.petitAxe = petitAxe;
     }
-    
+
+    /**
+     * Constructeur avec objet Ellipse pour clonage
+     * @param ellipse
+     */
     public Ellipse(Ellipse ellipse) {
         this(new Point(ellipse.getCentre()), new Ligne(ellipse.grandAxe) , new Ligne(ellipse.petitAxe));
     }
@@ -93,5 +95,14 @@ public class Ellipse extends Forme implements Tools {
         if (o == null || getClass() != o.getClass()) return false;
         Ellipse ellipse = (Ellipse) o;
         return Objects.equals(grandAxe, ellipse.grandAxe) && Objects.equals(petitAxe, ellipse.petitAxe);
+    }
+
+    @Override
+    public String toString() {
+        return "Ellipse{" +
+                "grandAxe=" + grandAxe +
+                ", petitAxe=" + petitAxe +
+                ", pCentre=" + pCentre +
+                '}';
     }
 }
