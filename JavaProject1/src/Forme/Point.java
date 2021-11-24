@@ -41,19 +41,6 @@ public class Point implements Tools {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Point point = (Point) o;
-        return x == point.x && y == point.y;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(x, y);
-    }
-
-    @Override
     public void homothetie(final Point origine, final double k) {
         this.setY(k *(this.getY() - origine.getY()) + origine.getY());
         this.setX(k *(this.getX() - origine.getX()) + origine.getX());
@@ -98,5 +85,18 @@ public class Point implements Tools {
         double xO = (this.getX() - origine.getX());
         this.setX((xO * Math.cos(angleRadian)) + (yO * Math.sin(angleRadian)) + origine.getX());
         this.setY(-(xO * Math.sin(angleRadian)) + (yO * Math.cos(angleRadian)) + origine.getY());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Point point = (Point) o;
+        return x == point.x && y == point.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }

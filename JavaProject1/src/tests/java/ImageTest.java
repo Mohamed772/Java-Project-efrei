@@ -21,7 +21,7 @@ public class ImageTest extends TestCase {
             add((new Point(1.0,1.0)));add((new Point(2.5,1.0)));add((new Point(2.5,0.5)));}});
 
         Ligne EF2 = new Ligne(new Point(4.0,1.0),new Point(1.0,4.0));
-        Image I2 = new Image(new ArrayList<Forme>(){{add(EF);add(P);}});
+        Image I2 = new Image(new ArrayList<Forme>(){{add(EF2);add(P2);}});
 
         System.out.println(I1.equals(I2));
         I1.homothetie(A,1.5);
@@ -36,7 +36,7 @@ public class ImageTest extends TestCase {
             add((new Point(1+x,1+y)));add((new Point(2+x,1+y)));add((new Point(2+x,0+y)));}});
 
         Ligne EF2 = new Ligne(new Point(1.0+x,1.0+y),new Point(3.0+x,2.0+y));
-        Image I2 = new Image(new ArrayList<Forme>(){{add(EF);add(P);}});
+        Image I2 = new Image(new ArrayList<Forme>(){{add(EF2);add(P2);}});
 
 
         //System.out.println(I1);
@@ -55,7 +55,7 @@ public class ImageTest extends TestCase {
             add((new Point(1.0,0.0)));
             add((new Point(0.0,0.0)));}});
         Ligne EF2 = new Ligne(new Point(1.0,-1.0),new Point(3.0,1.0));
-        Image I2 = new Image(new ArrayList<Forme>(){{add(EF);add(P);}});
+        Image I2 = new Image(new ArrayList<Forme>(){{add(EF2);add(P2);}});
 
         I1.rotation(A,90);
         //System.out.println(I1);
@@ -70,8 +70,8 @@ public class ImageTest extends TestCase {
                                                             add((new Point(1.0,1.0)));
                                                             add((new Point(1.6,1.8)));
                                                             add((new Point(0.8,2.4)));}});
-        Ligne EF2 = new Ligne(new Point(2.2,2.6),new Point(2.6,0.2));
-        Image I2 = new Image(new ArrayList<Forme>(){{add(EF);add(P);}});
+        Ligne EF2 = new Ligne(new Point(2.2,2.6),new Point(2.6,-0.2));
+        Image I2 = new Image(new ArrayList<Forme>(){{add(EF2);add(P2);}});
 
         I1.symetrieAxiale(AB);
         //System.out.println(I1);
@@ -87,7 +87,7 @@ public class ImageTest extends TestCase {
             add((new Point(1.0,1.0)));
             add((new Point(0.0,1.0)));
             add((new Point(0.0,2.0)));}});
-        Image I2 = new Image(new ArrayList<Forme>(){{add(EF);add(P);}});
+        Image I2 = new Image(new ArrayList<Forme>(){{add(EF2);add(P2);}});
 
         I1.symetrieCentrale(A);
         //System.out.println(I1);
@@ -98,11 +98,24 @@ public class ImageTest extends TestCase {
     }
 
     public void testGetSurface() {
+        double surfaceTotale = 0;
+        for(Forme f: I1.formeList){
+            surfaceTotale += f.getSurface();
+        }
+        //System.out.println(I1.getSurface() +" " + surfaceTotale);
+
+        Assert.assertEquals(I1.getSurface(),surfaceTotale,0.1);
 
     }
 
     public void testGetPerimetre() {
+        double perimetreTotale = 0;
+        for(Forme f: I1.formeList){
+            perimetreTotale += f.getPerimetre();
+        }
+        System.out.println(I1.getPerimetre() +" " + perimetreTotale);
 
+        Assert.assertEquals(I1.getPerimetre(),perimetreTotale,0.1);
     }
 
     public void testSortFormesPerimetre() {

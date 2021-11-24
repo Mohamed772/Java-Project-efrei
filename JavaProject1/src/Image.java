@@ -7,6 +7,8 @@ import java.util.Objects;
 public class Image extends Forme implements Tools {
     List<Forme> formeList;
 
+
+
     @Override
     public String toString() {
         return "Image{" +
@@ -37,20 +39,6 @@ public class Image extends Forme implements Tools {
         for (Forme f : formeList){
             f.rotation(origine,angle);
         }
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Image image = (Image) o;
-        return Objects.equals(formeList, image.formeList);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), formeList);
     }
 
     @Override
@@ -87,5 +75,18 @@ public class Image extends Forme implements Tools {
     public void sortFormesPerimetre(){
         Collections.sort(formeList, (a, b) -> (int) (a.getPerimetre() - b.getPerimetre()));
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Image image = (Image) o;
+        return formeList.equals(image.formeList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), formeList);
     }
 }

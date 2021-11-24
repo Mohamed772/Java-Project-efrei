@@ -1,6 +1,8 @@
 package Forme;
 
 
+import java.util.Objects;
+
 public class Ligne extends Forme implements Tools {
     private Point point1;
     private Point point2;
@@ -46,6 +48,19 @@ public class Ligne extends Forme implements Tools {
     public void translation(final double x, final double y) {
         this.point1.translation(x,y);
         this.point2.translation(x,y);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ligne ligne = (Ligne) o;
+        return Objects.equals(point1, ligne.point1) && Objects.equals(point2, ligne.point2);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), point1, point2);
     }
 
     @Override
