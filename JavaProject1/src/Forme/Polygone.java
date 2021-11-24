@@ -1,6 +1,7 @@
 package Forme;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Polygone extends Forme implements Tools{
     private List<Point> points;
@@ -8,6 +9,8 @@ public class Polygone extends Forme implements Tools{
     public Polygone(List<Point> points) {
         this.points = points;
     }
+
+
 
     @Override
     public double getSurface() {
@@ -71,5 +74,18 @@ public class Polygone extends Forme implements Tools{
         for(Point p:points){
             p.rotation(origine,angle);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Polygone polygone = (Polygone) o;
+        return points.equals(polygone.points);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(points);
     }
 }

@@ -83,8 +83,8 @@ public class Point implements Tools {
         double angleRadian = angle * (Math.PI / 180);
         double yO = (this.getY() - origine.getY());
         double xO = (this.getX() - origine.getX());
-        this.setX((xO * Math.cos(angleRadian)) + (yO * Math.sin(angleRadian)) + origine.getX());
-        this.setY(-(xO * Math.sin(angleRadian)) + (yO * Math.cos(angleRadian)) + origine.getY());
+        this.setX((double)Math.round((xO * Math.cos(angleRadian)) + (yO * Math.sin(angleRadian)) + origine.getX() * 1d) / 1d);
+        this.setY((double)Math.round(-(xO * Math.sin(angleRadian)) + (yO * Math.cos(angleRadian)) + origine.getY() * 1d) / 1d);
     }
 
     @Override

@@ -3,9 +3,9 @@ package Forme;
 public class Cercle extends Forme implements Tools {
     private Point pCercle;
 
-    public Cercle(Point centre, Point pCentre) {
+    public Cercle(Point centre, Point pCercle) {
         super(centre);
-        this.pCercle = pCentre;
+        this.pCercle = pCercle;
     }
 
     public Point getpCercle() {
